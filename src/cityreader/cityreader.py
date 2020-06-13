@@ -123,26 +123,36 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
 
     # within is a list comprehension
-    within = [loca for loca in cities if loca.lat > first[0] and loca.lat <
-              first[1] and loca.lon > second[0] and loca.lon < second[1]]
-
     # Ensure that the lat and lon valuse are all floats
     # changed values in str function
 
     # Go through each city and check to see if it falls within
     # the specified coordinates.
+    within = [loca for loca in cities if loca.lat > first[0] and loca.lat <
+              first[1] and loca.lon > second[0] and loca.lon < second[1]]
+    # within = []
 
-    # if city in cities:
+    # for city in cities:
     #     if (first_lat > second_lat and first_lon < second_lon):
-    # 			if(second_lat <= city.lat <= first_lat and second_lon <= city.lon <= first_lon):
-    # 				within.append(city)
-    # 		elif (first_lat > second_lat and first_lon < second_lon):
-    # 			if(second_lat <= city.lat)
+    #         if(second_lat <= city.lat <= first_lat and second_lon <= city.lon <= first_lon):
+    #             within.append(city)
+    #     elif (first_lat > second_lat and first_lon < second_lon):
+    #         if(second_lat <= city.lat <= first_lat and first_lon <= city.lon <= second_lon):
+    #             within.append(city)
+    #     elif (first_lat < second_lat and first_lon > second_lon):
+    #         if (first_lat <= city.lat <= second_lat and second_lon <= city.lon <= first_lon):
+    #             within.append(city)
+    #     elif (first_lat < second_lat and first_lon < second_lon):
+    #         if (first_lat <= city.lat <= second_lat and first_lon <= city.lon <= second_lon):
+    #             within.append(city)
 
     return within
 
 
-# print the function
+# within = cityreader_stretch(float(first_lat), float(
+#     first_lon), float(second_lat), float(second_lon))
+# print the function by iterating over the boxed variables
 print(cityreader_stretch(box[0], box[1], box[2], box[3]))
 
-# finished with extensive research on how to turn lat and lon into
+# for city in within:
+#     print(city.name, float(city.lat), float(city.lon))
