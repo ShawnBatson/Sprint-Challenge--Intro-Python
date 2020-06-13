@@ -84,6 +84,29 @@ for c in cities:
 
 # figure out how to form the WMO Square: Square formation pos/neg, pos/pos, neg/pos, neg/neg in that order
 
+#  get the input:
+first_loc = input(
+    "please enter your first set of coordinates, please include a comma in between them: ")
+second_loc = input(
+    "please enter your second set of coordinates, please include a comma in betwen them: ")
+
+# Ensure that the lat and lon values are floats (user input change into floats)
+# float both input numbers
+
+
+def floatomatic(a, b):
+    # set the numbers to a variable
+    itemize = f"{a},{b}"
+    # return the float version of those numbers, split at the comma
+    # must be a list --  i think I keep getting a subscriptable error
+    return [float(num) for num in itemize.split(",")]
+
+
+# set the values to a variable:
+box = floatomatic(first_loc, second_loc)
+
+# order the variables
+
 
 def wmo_square_form(a, b):
     if a < b:
@@ -116,35 +139,10 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # 		elif (first_lat > second_lat and first_lon < second_lon):
     # 			if(second_lat <= city.lat)
 
-
     return within
 
-# Ensure that the lat and lon values are floats (user input change into floats)
-
-# use a function that can be used after the inputs are input
-
-
-def floatomatic(a, b):
-    # set the numbers to a variable
-    itemize = f"{a},{b}"
-    # return the float version of those numbers, split at the comma
-    # must be a list --  i think I keep getting a subscriptable error
-    return [float(num) for num in itemize.split(",")]
-
-
-# user input underneath here:
-first_loc = input(
-    "please enter your first set of coordinates, please include a comma in between them: ")
-second_loc = input(
-    "please enter your second set of coordinates, please include a comma in betwen them: ")
-
-
-# now send the input through the floatomatic
-# set it to a variable
-box = floatomatic(first_loc, second_loc)
 
 # print the function
-
 print(cityreader_stretch(box[0], box[1], box[2], box[3]))
 
 # finished with extensive research on how to turn lat and lon into
