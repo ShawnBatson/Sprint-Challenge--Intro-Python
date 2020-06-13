@@ -117,6 +117,8 @@ def wmo_square_form(a, b):
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # normalize the data with the outer function
+    # first = wmo_square_form(lat1, lon1)
+    # second = wmo_square_form(lon1, lon2)
     first = wmo_square_form(lat1, lat2)
     second = wmo_square_form(lon1, lon2)
 
