@@ -75,7 +75,12 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# Get latitude and longitude values from the user
+
+# first_lat = input("enter the first latitude")
+# first_lon = input("enter the first longitude")
+# second_lat = input("enter the second latitude")
+# second_lon = input("enter the second longitude")
+
 
 # figure out how to form the WMO Square: Square formation pos/neg, pos/pos, neg/pos, neg/neg in that order
 
@@ -103,6 +108,14 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
 
     # Go through each city and check to see if it falls within
     # the specified coordinates.
+
+    # if city in cities:
+    #     if (first_lat > second_lat and first_lon < second_lon):
+    # 			if(second_lat <= city.lat <= first_lat and second_lon <= city.lon <= first_lon):
+    # 				within.append(city)
+    # 		elif (first_lat > second_lat and first_lon < second_lon):
+    # 			if(second_lat <= city.lat)
+
 
     return within
 
