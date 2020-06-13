@@ -10,9 +10,6 @@ class City:
         self.lat = lat
         self.lon = lon
 
-    def __repr__(self):
-        print(f"{self.name}: {self.lat}, {self.lon}")
-
     def __str__(self):
         return f"{self.name}, {self.lat}-{self.lat} "
 
@@ -54,11 +51,9 @@ for c in cities:
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
-# These points form the corners of a lat/lon square. Pass these latitude and
-# longitude values as parameters to the `cityreader_stretch` function, along
-# with the `cities` list that holds all the City instances from the `cityreader`
-# function. This function should output all the cities that fall within the
-# coordinate square.
+# These points form the corners of a lat/lon square.
+
+# Pass these latitude and longitude values as parameters to the `cityreader_stretch` function, along with the `cities` list that holds all the City instances from the `cityreader` function. This function should output all the cities that fall within the coordinate square.
 #
 # Be aware that the user could specify either a lower-left/upper-right pair of
 # coordinates, or an upper-left/lower-right pair of coordinates. Hint: normalize
@@ -80,15 +75,63 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# TODO Get latitude and longitude values from the user
+# Get latitude and longitude values from the user
+
+# figure out how to form the WMO Square: Square formation pos/neg, pos/pos, neg/pos, neg/neg in that order
+
+
+def wmo_square_form(a, b):
+    if a < b:
+        return [a, b]
+    elif a > b:
+        return [b, a]
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-    # within will hold the cities that fall within the specified region
-    within = []
+    # normalize the data with the outer function
+    first = wmo_square_form(lat1, lat2)
+    second = wmo_square_form(lon1, lon2)
 
-    # TODO Ensure that the lat and lon valuse are all floats
+    # within will hold the cities that fall within the specified region
+
+    # within is a list comprehension
+    within = [loca for loca in cities if loca.lat > first[0] and loca.lat <
+              first[1] and loca.lon > second[0] and loca.lon < second[1]]
+
+    # Ensure that the lat and lon valuse are all floats
+    # changed values in str function
+
     # Go through each city and check to see if it falls within
     # the specified coordinates.
 
     return within
+
+# Ensure that the lat and lon values are floats (user input change into floats)
+
+# use a function that can be used after the inputs are input
+
+
+def floatomatic(a, b):
+    # set the numbers to a variable
+    itemize = f"{a},{b}"
+    # return the float version of those numbers, split at the comma
+    # must be a list --  i think I keep getting a subscriptable error
+    return [float(num) for num in itemize.split(",")]
+
+
+# user input underneath here:
+first_loc = input(
+    "please enter your first set of coordinates, please include a comma in between them: ")
+second_loc = input(
+    "please enter your second set of coordinates, please include a comma in betwen them: ")
+
+
+# now send the input through the floatomatic
+# set it to a variable
+box = floatomatic(first_loc, second_loc)
+
+# print the function
+
+print(cityreader_stretch(box[0], box[1], box[2], box[3]))
+
+# finished with extensive research on how to turn lat and lon into
